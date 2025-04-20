@@ -1,131 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classic Layout</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Liên Hệ Đặt Tiệc</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header">
-        <div class="logo">Classic</div>
-        <div class="nav">
-            <a href="#" class="home">Home</a>
-            <a href="#">Blog</a>
-            <a href="#">Contact</a>
-        </div>
-    </div>
-
-    <div class="hero">
-        <div class="hero-text">
-            <h1>Introduction</h1>
-            <p>Suspendisse ut magna vel velit cursus tempor ut nec nunc. Mauris vehicula.</p>
-        </div>
-    </div>
-
-    <div class="grid-section">
-        <div class="grid-item">
-            <img src="https://placehold.co/400" alt="Image 1">
-            <h3>Lorem ipsum dolor #1</h3>
-            <p>Aenean cursus tellus mauris, quis consequat mauris dapibus id. Done...</p>
-            <a href="#" class="btn">Detail</a>
-            <a href="#" class="btn">Read More</a>
-        </div>
-        <div class="grid-item">
-            <img src="https://placehold.co/400" alt="Image 2">
-            <h3>Lorem ipsum dolor #2</h3>
-            <p>Aenean cursus tellus mauris, quis consequat mauris dapibus id. Done...</p>
-            <a href="#" class="btn">Detail</a>
-            <a href="#" class="btn">Read More</a>
-        </div>
-        <div class="grid-item">
-            <img src="https://placehold.co/400" alt="Image 3">
-            <h3>Lorem ipsum dolor #3</h3>
-            <p>Aenean cursus tellus mauris, quis consequat mauris dapibus id. Done...</p>
-            <a href="#" class="btn">Detail</a>
-            <a href="#" class="btn">Read More</a>
-        </div>
-        <div class="grid-item">
-            <img src="https://placehold.co/400" alt="Image 4">
-            <h3>Lorem ipsum dolor #4</h3>
-            <p>Aenean cursus tellus mauris, quis consequat mauris dapibus id. Done...</p>
-            <a href="#" class="btn">Detail</a>
-            <a href="#" class="btn">Read More</a>
-        </div>
-    </div>
-
-    <div class="main-content">
-        <div class="content">
-            <h2>Pellentesque fermentum mauris et posuere</h2>
-            <img src="https://placehold.co/400" alt="Main Image">
-            <p>Donec tempor lobortis tortor, in feugiat massa facilisis sed. Ut dignissim viverra pretium. In eu justo maximus turpis feugiat finibus scelerisque nec eros. Cras nec lectus tempor nibh vestibulum eleifend et ac elit.</p>
-            <p>Morbi vel massa eget nulla non lorem ipsum tortor. Nunc nec nisl vitae massa facilisis feugiat et ac elit. Ut fringilla lacinia ac tempor ultricies. Mauris lacinia placerat et mattis.</p>
-            <p>Vivamus accumsan blandit igula. Sed lobortis efficitur sapien.</p>
-            <a href="#" class="btn">Read More</a>
-        </div>
-        <div class="sidebar">
-            <h3>Categories</h3>
-            <ul>
-                <li><a href="#">Tincidunt non faucibus placerat</a></li>
-                <li><a href="#">Vestibulum tempor ac dictum</a></li>
-                <li><a href="#">Fusce non turpis euismod</a></li>
-                <li><a href="#">Nam in augue consectetur</a></li>
-                <li><a href="#">Text Link Color #006699</a></li>
-            </ul>
-            <h3>Useful Links</h3>
-            <ul>
-                <li><a href="#">Suspendisse sed nulla</a></li>
-                <li><a href="#">Lorem ipsum dolor sit</a></li>
-                <li><a href="#">Duis nec purus et eros</a></li>
-                <li><a href="#">Etiam pulvinar et igula sed</a></li>
-                <li><a href="#">Proin eget felis eu</a></li>
-            </ul>
-            <h3>Related Posts</h3>
-            <div class="related-posts">
-                <div class="post">
-                    <img src="https://placehold.co/400" alt="Post 1">
-                    <p>Lorem ipsum dolor sit amet cursus...</p>
+    <div class="container">
+        <div class="form-container">
+            <h1>Liên Hệ Đặt Tiệc</h1>
+            <p class="description">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+            </p>
+            
+            <form id="reservation-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullname">Họ và tên</label>
+                        <input type="text" id="fullname" placeholder="Nhập họ và tên">
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Số lượng khách</label>
+                        <input type="number" id="guests" placeholder="0">
+                    </div>
                 </div>
-                <div class="post">
-                    <img src="https://placehold.co/400" alt="Post 2">
-                    <p>Lorem ipsum dolor sit amet cursus...</p>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại</label>
+                        <input type="tel" id="phone" placeholder="Số điện thoại">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-date">Ngày tổ chức sự kiện</label>
+                        <input type="date" id="event-date" value="2025-04-20">
+                    </div>
                 </div>
-                <div class="post">
-                    <img src="https://placehold.co/400" alt="Post 3">
-                    <p>Lorem ipsum dolor sit amet cursus...</p>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="address">Địa chỉ</label>
+                        <input type="text" id="address" placeholder="nhập địa chỉ">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-type">Loại sự kiện</label>
+                        <input type="text" id="event-type" placeholder="nhập loại sự kiện">
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <div>
-            <h3>Proin eu posuere felis</h3>
-            <p>Classic is free HTML CSS website template provided by templatemo for everyone. Feel free to use it.</p>
-            <p>Aenean cursus tellus mauris, quis consequat mauris dapibus id. Done...</p>
-            <p>Jenny Egg (Executive)</p>
-        </div>
-        <div>
-            <h3>Nulla tortor dolor</h3>
-            <p>Tincidunt non faucibus vestibulum tempor fusce non turpis euismod lorem ipsum dolor sit amet in augue consectetur.</p>
-            <p>Text Link Color #CC6666</p>
-        </div>
-        <div>
-            <h3>Etiam mollis ornare</h3>
-            <p>Aenean cursus tellus mauris, quis consequat mauris dapibus id. Done...</p>
-            <a href="#" class="btn">Read More</a>
-        </div>
-        <div>
-            <h3>Fusce non turpis</h3>
-            <div class="gallery">
-                <img src="https://placehold.co/400" alt="Gallery 1">
-                <img src="https://placehold.co/400" alt="Gallery 2">
-                <img src="https://placehold.co/400" alt="Gallery 3">
-                <img src="https://placehold.co/400" alt="Gallery 4">
-                <img src="https://placehold.co/400" alt="Gallery 5">
-                <img src="https://placehold.co/400" alt="Gallery 6">
-            </div>
-            <a href="#" class="btn">Browse</a>
+                
+                <div class="form-row">
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="equipment" name="equipment">
+                        <label for="equipment">Nhận tư vấn trang gói sự kiện (MC, ánh sáng, sân khấu,...)</label>
+                    </div>
+                </div>
+                
+                <div class="form-row submit-row">
+                    <button type="submit" class="submit-btn">GỬI THÔNG TIN</button>
+                </div>
+            </form>
         </div>
     </div>
 </body>
