@@ -3,63 +3,562 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên Hệ Đặt Tiệc</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Nhà Hàng - Đặt Tiệc Tại Gia</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        /* Custom styles */
+        :root {
+            --primary-color: #c75f1d;
+            --primary-dark: #a74e15;
+            --secondary-color: #333;
+            --light-bg: #f9f9f9;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: var(--secondary-color);
+        }
+        
+        /* Header styles */
+        .navbar {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--secondary-color) !important;
+        }
+        
+        .nav-link:hover, .nav-link:focus {
+            color: var(--primary-color) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+        
+        .btn-outline-light:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 600px;
+            background-image: url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Section styles */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        
+        /* Step cards */
+        .step-card {
+            text-align: center;
+            padding: 1.5rem;
+            height: 100%;
+            position: relative;
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #f5f5f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 2rem;
+        }
+        
+        .step-number {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        /* Booking widget */
+        .booking-widget {
+            background-image: url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .booking-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+        }
+        
+        /* Service cards */
+        .service-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .service-links a {
+            display: block;
+            margin: 10px 0;
+            color: #555;
+            text-decoration: none;
+        }
+        
+        .service-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Reason cards */
+        .reason-card {
+            text-align: center;
+            padding: 1rem;
+            height: 100%;
+        }
+        
+        .reason-image {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .reason-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #fff;
+        }
+        
+        footer h5 {
+            color: #fff;
+            margin-bottom: 1.2rem;
+        }
+        
+        footer p, footer a {
+            color: #aaa;
+        }
+        
+        footer a:hover {
+            color: var(--primary-color);
+        }
+        
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .payment-card {
+            width: 50px;
+            height: 30px;
+            background-color: var(--primary-color);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            color: #888;
+            font-size: 14px;
+        }
+        
+        /* Media object styling */
+        .info-media {
+            position: relative;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255,255,255,0.8);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .play-button i {
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="form-container">
-            <h1>Liên Hệ Đặt Tiệc</h1>
-            <p class="description">
-                Lorem Ipsum is simply dummy text 
-            </p>
-            
-            <form id="reservation-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="fullname">Họ và tên</label>
-                        <input type="text" id="fullname" placeholder="Nhập họ và tên">
+    <!-- Header/Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">Nhà Hàng</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Thực đơn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Về chúng tôi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tin tức</a>
+                    </li>
+                    <li class="nav-item d-block d-lg-none mt-2">
+                        <a class="btn btn-primary" href="#">Đặt tiệc ngay</a>
+                    </li>
+                </ul>
+                <form class="d-flex me-2">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Tìm kiếm món ăn" aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button>
                     </div>
-                    <div class="form-group">
-                        <label for="guests">Số lượng khách</label>
-                        <input type="number" id="guests" placeholder="0">
-                    </div>
+                </form>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="me-3 text-secondary"><i class="bi bi-person-circle fs-5"></i></a>
+                    <a href="#" class="text-secondary position-relative">
+                        <i class="bi bi-cart3 fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">1</span>
+                    </a>
+                    <a href="#" class="btn btn-primary ms-3 d-none d-lg-block">Đặt tiệc ngay</a>
                 </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="phone">Số điện thoại</label>
-                        <input type="tel" id="phone" placeholder="Số điện thoại">
-                    </div>
-                    <div class="form-group">
-                        <label for="event-date">Ngày tổ chức sự kiện</label>
-                        <input type="date" id="event-date" value="2025-04-20">
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="address">Địa chỉ</label>
-                        <input type="text" id="address" placeholder="nhập địa chỉ">
-                    </div>
-                    <div class="form-group">
-                        <label for="event-type">Loại sự kiện</label>
-                        <input type="text" id="event-type" placeholder="nhập loại sự kiện">
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group checkbox-group">
-                        <input type="checkbox" id="equipment" name="equipment">
-                        <label for="equipment">Nhận tư vấn trang gói sự kiện (MC, ánh sáng, sân khấu,...)</label>
-                    </div>
-                </div>
-                
-                <div class="form-row submit-row">
-                    <button type="submit" class="submit-btn">GỬI THÔNG TIN</button>
-                </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </nav>
+
+    <!-- Hero Section with Promotion -->
+    <section class="hero">
+        <div class="hero-overlay">
+            <div class="container text-center text-white">
+                <h1 class="mb-3">ƯU ĐÃI LÊN TỚI 30% KHI ĐẶT SET MENU SUM VẬY</h1>
+                <p class="mb-4">Áp dụng cho tiệc tại Hà Nội, từ 15/11 - 20/11/2021</p>
+                <a href="#" class="btn btn-primary btn-lg">XEM CHI TIẾT ƯU ĐÃI</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Info -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Tiệc tại gia chất nhà hàng</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum quae fugit accusantium commodi esse modi pariatur praesentium, voluptas dolor ea qui? Vel dolore ipsam vitae voluptatem esse repellat nobis sint. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p>Eum quae fugit accusantium commodi esse modi pariatur praesentium, voluptas dolor ea qui? Vel dolore ipsam vitae voluptatem esse repellat nobis sint.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum quae fugit accusantium commodi esse modi pariatur praesentium, voluptas dolor ea qui? Vel dolore ipsam vitae voluptatem esse repellat nobis sint.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="info-media">
+                        <img src="https://placehold.co/600x400" alt="Nhà hàng" class="img-fluid rounded">
+                        <div class="play-button">
+                            <i class="bi bi-play-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Steps -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">5 BƯỚC ĐỂ ĐẶT TIỆC</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg">
+                    <div class="step-card">
+                        <div class="step-icon">📖</div>
+                        <h3 class="fs-5 fw-bold">TÌM HIỂU THÔNG TIN</h3>
+                        <p class="text-muted">Khách hàng tìm hiểu thông tin và đăng kí tư vấn</p>
+                        <div class="step-number">1</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg">
+                    <div class="step-card">
+                        <div class="step-icon">📑</div>
+                        <h3 class="fs-5 fw-bold">LIÊN HỆ TƯ VẤN</h3>
+                        <p class="text-muted">Nhận vấn liên hệ trong 2 tiếng để nhận thông tin</p>
+                        <div class="step-number">2</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg">
+                    <div class="step-card">
+                        <div class="step-icon">👤</div>
+                        <h3 class="fs-5 fw-bold">KÝ KẾT HỢP ĐỒNG</h3>
+                        <p class="text-muted">Khách hàng tìm hiểu thông tin và đăng kí tư vấn</p>
+                        <div class="step-number">3</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg">
+                    <div class="step-card">
+                        <div class="step-icon">💳</div>
+                        <h3 class="fs-5 fw-bold">PHỤC VỤ TIỆC</h3>
+                        <p class="text-muted">Khách hàng tìm hiểu thông tin và đăng kí tư vấn</p>
+                        <div class="step-number">4</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg">
+                    <div class="step-card">
+                        <div class="step-icon">📖</div>
+                        <h3 class="fs-5 fw-bold">THANH TOÁN</h3>
+                        <p class="text-muted">Khách hàng tìm hiểu thông tin và đăng kí tư vấn</p>
+                        <div class="step-number">5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Widget -->
+    <section class="booking-widget py-5">
+        <div class="booking-overlay"></div>
+        <div class="container position-relative py-4">
+            <div class="row align-items-center text-white">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <h2 class="mb-3">ĐẶT TIỆC Ở ĐÂY</h2>
+                    <p>Đặt tiệc ngay hôm nay để những sự kiện quan trọng của bạn trở nên đơn giản và dễ dàng hơn bao giờ hết</p>
+                </div>
+                <div class="col-lg-7">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <select class="form-select form-select-lg">
+                                <option selected>CHỌN NGÀY ĐẶT</option>
+                                <option>06/05</option>
+                                <option>07/05</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select form-select-lg">
+                                <option selected>SỐ BÀN TIỆC</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-primary btn-lg w-100">ĐẶT TIỆC NGAY</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-outline-light btn-lg w-100">XEM THỰC ĐƠN</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <h3 class="service-title">DỊCH VỤ</h3>
+                        <div class="service-links">
+                            <a href="#">TIỆC TẠI GIA</a>
+                            <a href="#">TIỆC CƯỚI HỎI</a>
+                            <a href="#">TIỆC BUFFET</a>
+                            <a href="#">TIỆC SỰ KIỆN</a>
+                            <a href="#">TIỆC TEA BREAK</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <h3 class="service-title">SET MENU</h3>
+                        <img src="https://placehold.co/600x400" alt="Set Menu" class="img-fluid rounded mb-3">
+                        <p><a href="#" class="text-primary">Xem chi tiết</a></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <h3 class="service-title">MENU TỰ CHỌN</h3>
+                        <img src="https://placehold.co/600x400" alt="Menu Tự Chọn" class="img-fluid rounded mb-3">
+                        <p><a href="#" class="text-primary">Xem chi tiết</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">VÌ SAO LỰA CHỌN CHÚNG TÔI?</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="reason-card">
+                        <img src="https://placehold.co/600x400" alt="Restaurant Interior" class="img-fluid reason-image w-100">
+                        <h3 class="reason-title">SỰ LỰA CHỌN ẨM THỰC SỐ 1</h3>
+                        <p>Thuộc Golden Gate Group - 15 năm kinh nghiệp, hơn 400 nhà hàng toàn quốc</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="reason-card">
+                        <img src="https://placehold.co/600x400" alt="Food Safety" class="img-fluid reason-image w-100">
+                        <h3 class="reason-title">THỰC PHẨM AN TOÀN</h3>
+                        <p>Đảm bảo an toàn vệ sinh thực phẩm từ nguồn cung cấp đến khâu chế biến</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="reason-card">
+                        <img src="https://placehold.co/600x400" alt="Varied Menu" class="img-fluid reason-image w-100">
+                        <h3 class="reason-title">THỰC ĐƠN ĐA DẠNG</h3>
+                        <p>Menu phong phú, kết hợp tinh hoa ẩm thực Á - Âu, đa dạng lựa chọn</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="reason-card">
+                        <img src="https://placehold.co/600x400" alt="Professional Service" class="img-fluid reason-image w-100">
+                        <h3 class="reason-title">PHỤC VỤ CHUYÊN NGHIỆP</h3>
+                        <p>Tư vấn tận tâm, phục vụ chu đáo, dịch vụ linh hoạt, thanh toán tiện lợi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-5 pb-2">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-md-6 col-lg-3">
+                    <h5>Về chúng tôi</h5>
+                    <p>Số điện thoại: 095.366.4722</p>
+                    <p>Địa chỉ: số 33 Nhân Chính, Trung Hòa, Cầu Giấy, Hà Nội</p>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5>Phương thức thanh toán</h5>
+                    <div class="payment-methods">
+                        <div class="payment-card">MC</div>
+                        <div class="payment-card">MC</div>
+                        <div class="payment-card">MC</div>
+                        <div class="payment-card">MC</div>
+                        <div class="payment-card">MC</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5>Truyền thông xã hội</h5>
+                    <div class="social-links">
+                        <a href="#"><i class="bi bi-facebook"></i> Facebook</a>
+                        <a href="#"><i class="bi bi-youtube"></i> YouTube</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5>Hỗ trợ khách hàng</h5>
+                    <p>Liên hệ Hotline: 036.555.1123</p>
+                    <p>Email: happy@gmail.com</p>
+                    <p>Địa chỉ: Số 33 Nhân Chính, Trung Hòa, Cầu Giấy, Hà Nội</p>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>Công ty TNHH Minh Trí</p>
+                <p>số CNĐK/DN cấp ngày 2/1/2020</p>
+                <p>© Thông báo</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
